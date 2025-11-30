@@ -15,15 +15,18 @@ typedef struct
 }AlgebraicGroup;
 
 
-void init_group(AlgebraicGroup* group, uint64_t module, uint64_t generator, uint64_t order);
+void init_group(AlgebraicGroup* group, uint64_t module, uint64_t generator);
 
 int main(){
+    AlgebraicGroup z_5;
+    init_group(&z_5, 5, 2);
 
+    printf("\nGroup is: Z%llu*\nChosen generator is: %llu\nGroup order is: %llu", z_5.module, z_5.generator, z_5.order);
     return 0;
 }
 
 //Simple _init through pointer
-void init_group(AlgebraicGroup* group, uint64_t module, uint64_t generator, uint64_t order){
+void init_group(AlgebraicGroup* group, uint64_t module, uint64_t generator){
     group->generator = generator;
     group->module = module;
     group->order = module-1;
