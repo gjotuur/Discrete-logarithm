@@ -17,6 +17,7 @@ typedef struct
 
 void init_group(AlgebraicGroup* group, uint64_t module, uint64_t generator);
 
+
 int main(){
     AlgebraicGroup z_5;
     init_group(&z_5, 5, 2);
