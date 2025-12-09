@@ -48,7 +48,6 @@ int main() {
     printf("Testing Silver-Pohlig-Hellman Algorithm\n");
     printf("========================================\n\n");
     
-    // Test 1: Small example
     uint64_t alpha1 = 2, beta1 = 8, n1 = 10;
     clock_t start = clock();
     uint64_t result1 = sph_log(alpha1, beta1, n1);
@@ -59,7 +58,6 @@ int main() {
     printf("Verification: %llu^%llu mod %llu = %llu\n", alpha1, result1, n1+1, ring_pow(alpha1, result1, n1+1));
     printf("Time: %.6f seconds\n\n", time1);
     
-    // Test 2: From Python code - type 1, p=2
     uint64_t alpha2 = 15, beta2 = 38, n2 = 46;
     start = clock();
     uint64_t result2 = sph_log(alpha2, beta2, n2);
@@ -70,8 +68,7 @@ int main() {
     printf("Verification: %llu^%llu mod %llu = %llu\n", alpha2, result2, n2+1, ring_pow(alpha2, result2, n2+1));
     printf("Time: %.6f seconds\n\n", time2);
     
-    // Test 3: From Python code - type 1, p=3
-    uint64_t alpha3 = 798, beta3 = 165, n3 = 910;
+    uint64_t alpha3 = 485, beta3 = 542, n3 = 676;
     start = clock();
     uint64_t result3 = sph_log(alpha3, beta3, n3);
     end = clock();
@@ -329,7 +326,6 @@ uint64_t sph_log(uint64_t alpha, uint64_t beta, uint64_t n) {
         moduli[i] = mod_i;
     }
     
-    // Solve using Chinese Remainder Theorem
     return solve_crt(remainders, moduli, fact.count);
 }
 
